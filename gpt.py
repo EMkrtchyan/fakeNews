@@ -18,7 +18,7 @@ n_layer = 6
 dropout = 0.15
 # ------------
 
-with open('./textNormalizing/news_cut.txt', 'r', encoding='utf-8') as f:
+with open('./textNormalizing/news_cut200.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
 # # here are all the unique characters that occur in this text
@@ -34,7 +34,7 @@ with open('./textNormalizing/news_cut.txt', 'r', encoding='utf-8') as f:
 # Custom tokenizer
 from tokenizers import Tokenizer
 
-tokenizer = Tokenizer.from_file("Tokenizer/bert.json")
+tokenizer = Tokenizer.from_file("Tokenizer/bert200.json")
 encoded = tokenizer.encode(text)
 vocab_size = len(tokenizer.get_vocab())
 
@@ -216,7 +216,7 @@ for iter in range(max_iters):
     if (iter % eval_interval == 0 or iter == max_iters - 1 )and not iter==0:
         losses = estimate_loss()
         print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
-        torch.save(model.state_dict(), f"./weights/bert{iter}.pt")
+        torch.save(model.state_dict(), f"./weights/bert200/{iter}.pt")
 
     # sample a batch of data
     xb, yb = get_batch('train')
