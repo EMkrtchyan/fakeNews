@@ -20,7 +20,7 @@ dropout = 0.2
 # Custom tokenizer
 from tokenizers import Tokenizer
 
-tokenizer = Tokenizer.from_file("Tokenizer/bert.json")
+tokenizer = Tokenizer.from_file("Tokenizer/bert200.json")
 vocab_size = len(tokenizer.get_vocab())
 
 
@@ -185,10 +185,11 @@ class GPTLanguageModel(nn.Module):
 
 model = GPTLanguageModel()
 
-model.load_state_dict(torch.load("weights/bert/bert3000.pt", weights_only=True))
+model.load_state_dict(torch.load("weights/bert200/9999.pt", weights_only=True))
 model.eval()
 m = model.to(device)
 
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
 #context = context.view([1,-1])
-print(tokenizer.decode(m.generate(context, max_new_tokens=500)[0].tolist(),skip_special_tokens = True))
+#print(tokenizer.decode(m.generate(context, max_new_tokens=500)[0].tolist(),skip_special_tokens = True))
+open('more.txt', 'w',encoding='utf-8').write(tokenizer.decode(m.generate(context, max_new_tokens=2000)[0].tolist()))
