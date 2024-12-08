@@ -1,4 +1,10 @@
 weights/bert33/
 weights/bert200/
+weights/bert1300/
 scraper/bs/news.txt
 textNormalizing/news_cut200.txt
+textNormalizing/news_cut1300.txt
+out
+data
+compiled
+__pycache__
